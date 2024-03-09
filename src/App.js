@@ -9,14 +9,17 @@ const API_URL = "https://www.omdbapi.com?apikey=b6003d8a";
 const App = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [movies, setMovies] = useState([]);
+  const [loading, setLoading] = useState(false)
 
   useEffect(() => {
     searchMovies("Batman");
   }, []);
 
   const searchMovies = async (title) => {
+    setLoading(true)
     const response = await fetch(`${API_URL}&s=${title}`);
     const data = await response.json();
+    setLoading(false)
 
     setMovies(data.Search);
   };
@@ -37,6 +40,8 @@ const App = () => {
           onClick={() => searchMovies(searchTerm)}
         />
       </div>
+        {loading && <span className="loading">+</span>}
+      
 
       {movies?.length > 0 ? (
         <div className="container">

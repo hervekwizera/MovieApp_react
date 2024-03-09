@@ -229,3 +229,19 @@ h1 {
     margin: 1rem;
   }
 }
+
+
+@keyframes circleAnim {
+  from{
+    transform: rotate(0deg);
+  }
+  to{
+    transform: rotate(360deg);
+  }
+}
+
+.loading{
+  color: white;
+  font-size: 50px;
+  animation: circleAnim 2s linear infinite;
+}
